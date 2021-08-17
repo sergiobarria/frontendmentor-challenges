@@ -1,0 +1,649 @@
+/* 
+====================
+Global Variables
+====================
+*/
+:root {
+  /* Colors */
+  --color-primary: #2d314d;
+  --color-secondary: #31d35c;
+  --color-accent: #2bb7da;
+
+  /* Gray Shades */
+  --color-gray-blue: #9698a6;
+  --color-gray-blue-light: #f4f5f7;
+  --color-gray-light: #fafafa;
+  --color-white: #ffffff;
+
+  /* Typography */
+  --font-size: 18px;
+  --ff-primary: "Public Sans", sans-serif;
+
+  /* Display */
+  --width-desktop: 1440px;
+  --width-mobile: 375px;
+}
+
+/* 
+====================
+Global Styles
+====================
+*/
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-gray-light);
+  font-family: var(--ff-primary);
+  overflow-x: hidden;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 300;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+p {
+  color: var(--color-gray-blue);
+  font-weight: 300;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+.btn {
+  background-image: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-accent)
+  );
+  color: var(--color-white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-family: var(--ff-primary);
+  font-weight: 400;
+  border-radius: 100rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  opacity: 70%;
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  p {
+    font-size: 1.125rem;
+  }
+
+  .section-container {
+    max-width: var(--width-desktop);
+    margin: 0 auto;
+    padding-left: 10rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.65rem;
+    padding-right: 10rem;
+    margin-top: 2.5rem;
+  }
+}
+
+/* 
+====================
+Header Styles
+====================
+*/
+header {
+  background-color: var(--color-white);
+  height: 4rem;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.nav-container {
+  display: flex;
+  height: inherit;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--width-desktop);
+  padding: 1.375rem;
+  margin: 0 auto;
+}
+
+nav {
+  display: none;
+}
+
+.nav-btn {
+  display: none;
+}
+
+.overlay {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.1)
+  );
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -5;
+  animation: scaleModal 0.5s;
+}
+
+@keyframes scaleModal {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hamburger-menu {
+  background-image: url("/images/icon-hamburger.svg");
+  background-position: center center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  height: 2rem;
+  width: 2rem;
+}
+
+.close-menu {
+  background-image: url("/images/icon-close.svg");
+  background-position: center center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  height: 2rem;
+  width: 2rem;
+}
+
+.modal-nav {
+  background-color: white;
+  position: absolute;
+  top: 5rem;
+  left: 0;
+  right: 0;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.modal-nav ul {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.modal-nav ul li {
+  margin: 1.5rem 0;
+}
+
+.modal-nav ul li a {
+  color: var(--color-primary);
+  font-size: 1.125rem;
+}
+
+.show-modal {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    height: 5rem;
+  }
+
+  .hamburger-menu {
+    display: none;
+  }
+
+  .nav-btn {
+    display: block;
+    margin-right: 10rem;
+  }
+
+  .logo-container {
+    padding-left: 5rem;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav-links {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin-right: 1.5rem;
+    position: relative;
+  }
+
+  .nav-link {
+    color: var(--color-gray-blue);
+    font-weight: 300;
+    font-size: 14px;
+    position: relative;
+  }
+
+  .nav-link:hover::after {
+    content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    height: 5px;
+    background: linear-gradient(
+      to right,
+      var(--color-secondary),
+      var(--color-accent)
+    );
+    left: 0;
+    bottom: -30px;
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .logo-container {
+    padding-left: 10rem;
+  }
+
+  .nav-btn {
+    margin-right: 10rem;
+  }
+}
+
+/* 
+====================
+Hero Styles
+====================
+*/
+#hero-section {
+  min-height: 46rem;
+}
+
+.hero {
+  height: 21.625rem;
+  background-image: url("/images/bg-intro-mobile.svg");
+  background-position: right 55% bottom 75%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.hero-img-container {
+  height: inherit;
+  position: relative;
+}
+
+.hero-img-container img {
+  width: 85%;
+  position: absolute;
+  left: 2rem;
+  bottom: -1.25rem;
+}
+
+.hero-content {
+  text-align: center;
+  margin: 1.5rem;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  #hero-section {
+    min-height: 46rem;
+  }
+
+  .hero {
+    height: 46rem;
+    background-image: url("/images/bg-intro-desktop.svg");
+    background-position: right -600% top 65%;
+    background-size: 95%;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+  }
+
+  .hero-content {
+    width: 28rem;
+    text-align: left;
+    margin: 0;
+  }
+
+  .hero-img-container {
+    width: 65%;
+    height: 100%;
+    order: 2;
+    position: absolute;
+    top: 9rem;
+    right: -12rem;
+  }
+}
+
+/* 
+====================
+Benefits Styles
+====================
+*/
+#benefits-section {
+  background-color: var(--color-gray-blue-light);
+  padding-top: 3.75rem;
+  padding-bottom: 3.75rem;
+  text-align: center;
+}
+
+.section-header {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.benefit-card {
+  width: 90%;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  #benefits-section {
+    text-align: left;
+  }
+
+  .section-header {
+    width: 40rem;
+    margin: 0;
+  }
+
+  .benefit-card h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--color-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1.625rem;
+  }
+
+  .benefit-card p {
+    font-size: 1rem;
+  }
+
+  .benefit-card {
+    width: 100%;
+  }
+}
+
+/* 
+====================
+Featured Posts Styles
+====================
+*/
+#featured-posts {
+  margin-top: 5.675rem;
+}
+
+#featured-posts h2 {
+  text-align: center;
+}
+
+.post-card {
+  width: 90%;
+  margin: 1.5rem auto;
+  border-radius: 5px;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+.post-card-img {
+  width: 100%;
+  object-fit: cover;
+  height: 12.5rem;
+}
+
+.card-content {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1rem;
+}
+
+.card-content span {
+  font-size: 0.625rem;
+  color: var(--color-gray-blue);
+  letter-spacing: 0.05rem;
+}
+
+.card-content h4 {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0.5rem 0;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.card-content h4:hover {
+  color: var(--color-secondary);
+}
+
+.card-content p {
+  font-size: 0.8125rem;
+}
+
+@media screen and (min-width: 768px) {
+  #featured-posts {
+    margin-bottom: 5.625rem;
+  }
+
+  #featured-posts h2 {
+    text-align: left;
+  }
+
+  .post-card {
+    width: 100%;
+  }
+}
+
+/* 
+====================
+Footer Styles
+====================
+*/
+footer {
+  min-height: 12rem;
+  background-color: var(--color-primary);
+  color: var(--color-gray-light);
+  text-align: center;
+}
+
+.footer-container {
+  padding: 3rem 0;
+}
+
+.company-logo {
+  padding: 1rem 0;
+}
+
+.social-icons {
+  padding: 1rem 0;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.links-group li {
+  margin-bottom: 1rem;
+}
+
+.links-group a {
+  width: 10rem;
+  font-size: 0.935rem;
+  color: var(--color-gray-blue-light);
+  font-weight: 300;
+}
+
+.copyright button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.attribution {
+  font-size: 0.675rem;
+}
+
+.attribution a {
+  color: var(--color-secondary);
+}
+
+.attribution a:hover {
+  opacity: 0.8;
+}
+
+@media screen and (min-width: 768px) {
+  footer {
+    height: 12rem;
+    background-color: var(--color-primary);
+    color: var(--color-gray-light);
+  }
+
+  .footer-container {
+    width: 1110px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 3rem 0;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+  }
+
+  .icons-container {
+    grid-column: span 3;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .social-icons {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .social-icons a {
+    margin-right: 0.5rem;
+    text-align: left;
+  }
+
+  .icon-img img:hover {
+    filter: brightness(0) saturate(100%) invert(91%) sepia(15%) saturate(5267%)
+      hue-rotate(69deg) brightness(91%) contrast(79%);
+  }
+
+  .links-container {
+    grid-column: span 9;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .links {
+    display: flex;
+  }
+
+  .links-group {
+    width: 10rem;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .links a {
+    width: 10rem;
+    font-size: 0.935rem;
+    color: var(--color-gray-blue-light);
+    font-weight: 300;
+  }
+
+  .links a:hover {
+    color: var(--color-secondary);
+  }
+
+  .copyright {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .copyright p {
+    font-size: 0.935rem;
+    margin: 0;
+  }
+
+  .attribution {
+    font-size: 0.675rem;
+  }
+
+  .attribution a {
+    color: var(--color-secondary);
+  }
+
+  .attribution a:hover {
+    opacity: 0.8;
+  }
+}

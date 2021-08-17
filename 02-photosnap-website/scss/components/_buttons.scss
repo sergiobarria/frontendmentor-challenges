@@ -1,0 +1,59 @@
+.btn {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: $white;
+}
+
+.btn-primary {
+  background-color: $black;
+  padding: 12px 24px;
+
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    background-color: $lightGrey;
+    color: $black;
+  }
+}
+
+.btn-secondary {
+  color: $black;
+
+  &-white {
+    color: $white;
+
+    &::after {
+      content: '';
+      background-image: url('/assets/shared/desktop/arrow-white.svg');
+      background-repeat: no-repeat;
+      display: inline-block;
+      height: 14px;
+      width: 43px;
+      margin-left: 20px;
+      vertical-align: middle;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &::after {
+    content: '';
+    background-image: url('/assets/shared/desktop/arrow.svg');
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 14px;
+    width: 43px;
+    margin-left: 20px;
+    vertical-align: middle;
+    color: black;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
